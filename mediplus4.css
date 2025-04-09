@@ -1,0 +1,179 @@
+/* Général */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #ffffff;
+    color: #333;
+    line-height: 1.6;
+    padding: 20px;
+}
+
+/* En-tête en bleu */
+header {
+    background-color: #007BFF; /* Bleu */
+    color: #fff;
+    padding: 20px;
+    text-align: center;
+    border-radius: 8px;
+}
+
+header h1 {
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+}
+
+header p {
+    font-size: 1.2rem;
+    margin-bottom: 15px;
+}
+
+.search-bar {
+    width: 70%;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    font-size: 1rem;
+}
+
+.search-bar:focus {
+    outline: none;
+    border-color: #007BFF;
+}
+
+/* Sections */
+section {
+    margin-top: 40px;
+}
+
+section h2 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+/* Encadrer les sections */
+.services, .doctors {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+/* Services en vert */
+.services {
+    border: 1px solid #28a745; /* Bordure verte */
+}
+
+.services:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* Grille pour les services - 2 éléments par ligne */
+.service-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    justify-items: stretch;
+}
+
+.service {
+    background-color: #e8f5e9;  /* Fond vert très clair */
+    padding: 40px;
+    font-size: 1.5rem;
+    border-radius: 8px;
+    text-align: center;
+    cursor: pointer;
+    transition: transform 0.3s;
+    width: 100%;
+    border: 1px solid lab(22.45% -28.37 21.59 / 0.438); /* Bordure verte */
+}
+
+.service:hover {
+    transform: translateY(-5px);
+}
+
+/* Adaptation aux grands écrans (ex. 4K) */
+@media screen and (min-width: 1920px) {
+    .service-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    .service {
+        font-size: 1.8rem;
+        padding: 50px;
+    }
+}
+
+/* Doctors - reste inchangé */
+.doctor-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+}
+
+.doctor {
+    background-color: #f1f1f1;
+    padding: 15px;
+    border-radius: 8px;
+    text-align: center;
+    transition: transform 0.3s;
+    border: 1px solid #007BFF;
+}
+
+.doctor:hover {
+    transform: translateY(-5px);
+}
+
+.avatar {
+    width: 50px;
+    height: 50px;
+    background-color: #007BFF;
+    color: #fff;
+    font-size: 1.5rem;
+    border-radius: 50%;
+    margin: 0 auto 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.doctor p {
+    font-size: 1.2rem;
+    margin-bottom: 5px;
+}
+
+.doctor span {
+    font-size: 1rem;
+    color: #777;
+}
+
+/* Bouton de chat en bleu */
+.chat-btn {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    background-color: #007BFF;
+    color: #fff;
+    font-size: 1.8rem;
+    border: none;
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: background-color 0.3s;
+}
+
+.chat-btn:hover {
+    background-color: #0056b3;
+}
