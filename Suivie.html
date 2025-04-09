@@ -321,6 +321,119 @@
                 display: none;
             }
         }
+        /* Chatbot styles */
+        .chatbot-toggle {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background-color: #1a73e8;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            z-index: 99;
+            font-size: 24px;
+        }
+        
+        .chatbot-container {
+            position: fixed;
+            bottom: 100px;
+            right: 30px;
+            width: 350px;
+            height: 450px;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+            display: none;
+            flex-direction: column;
+            z-index: 99;
+            overflow: hidden;
+        }
+        
+        .chatbot-header {
+            background-color: #1a73e8;
+            color: white;
+            padding: 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .chatbot-header h3 {
+            margin: 0;
+            font-size: 18px;
+        }
+        
+        .close-chatbot {
+            color: white;
+            font-size: 20px;
+            cursor: pointer;
+        }
+        
+        .chatbot-messages {
+            flex: 1;
+            padding: 15px;
+            overflow-y: auto;
+        }
+        
+        .message {
+            margin-bottom: 15px;
+            max-width: 80%;
+        }
+        
+        .bot-message {
+            background-color: #f1f1f1;
+            padding: 10px 15px;
+            border-radius: 15px;
+            color: #333;
+            align-self: flex-start;
+        }
+        
+        .user-message {
+            background-color: #1a73e8;
+            padding: 10px 15px;
+            border-radius: 15px;
+            color: white;
+            margin-left: auto;
+        }
+        
+        .chatbot-input {
+            display: flex;
+            padding: 10px;
+            border-top: 1px solid #eee;
+        }
+        
+        .chatbot-input input {
+            flex: 1;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 20px;
+            outline: none;
+        }
+        
+        .send-btn {
+            background-color: #1a73e8;
+            color: white;
+            border: none;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            margin-left: 10px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        /* Pharmacy specific styles */
+        .pharmacy-icon {
+            color: #4caf50;
+        }
     </style>
 </head>
 <body>
@@ -380,7 +493,7 @@
                     <p>Partagez de manière sécurisée vos informations avec les professionnels de santé que vous choisissez.</p>
                 </div>
                 <div class="feature-card" >
-                    <a href="https://drive.proton.me/urls/NSXQPZAEWG#I1iP9EHH456l" class="btn" style="text-decoration: none;">
+                    <a href="https://drive.proton.me/urls/EAFCV0A1FM#mZLYkyGdKyim" class="btn" style="text-decoration: none;">
                     <div class="feature-icon">📱</div>
                     <h3 class="feature-title">Application mobile</h3>
                     <p>Accédez à toutes vos données depuis votre smartphone, où que vous soyez.</p> 
@@ -507,5 +620,23 @@
             </div>
         </div>
     </footer>
+    
+    <!-- Chatbot -->
+    <div class="chatbot-toggle" onclick="toggleChatbot()">💬</div>
+    <div class="chatbot-container" id="chatbot">
+        <div class="chatbot-header">
+            <h3>Assistant MEDIPLUS</h3>
+            <span class="close-chatbot" onclick="toggleChatbot()">&times;</span>
+        </div>
+        <div class="chatbot-messages" id="chatbot-messages">
+            <div class="message bot-message">
+                Bonjour ! Je suis l'assistant virtuel de MEDIPLUS. Comment puis-je vous aider aujourd'hui ?
+            </div>
+        </div>
+        <div class="chatbot-input">
+            <input type="text" id="user-input" placeholder="Tapez votre message..." onkeypress="handleKeyPress(event)">
+            <button class="send-btn" onclick="sendMessage()">➤</button>
+        </div>
+    </div>
 </body>
 </html>
