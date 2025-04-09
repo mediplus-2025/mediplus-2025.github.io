@@ -470,22 +470,36 @@
             <h2 class="section-title">Nos services</h2>
             
             <div class="services-grid">
-                <div class="service-card">
-                    <div class="service-icon">👨‍⚕️</div>
-                    <h3>Consultation en ligne</h3>
-                    <p>Consultez un médecin depuis le confort de votre domicile via vidéoconférence sécurisée.</p>
-                </div>
+                <!-- <a href="#" onclick="closeModal('login-modal'); openModal('patient-modal');"></a> -->
+                    <a class="service-card" href="#" style="text-decoration: none;" onclick="closeModal('login-modal'); openModal('patient-modal');">
+                        <div class="service-icon">👨‍⚕️</div>
+                        <h3>Consultation en ligne</h3>
+                        <p>Consultez un médecin depuis le confort de votre domicile via vidéoconférence sécurisée.</p> 
+                    </a>
+                <!-- </a> -->
                 
-                <div class="service-card">
+                <!-- <div class="service-card"> -->
+                   <a class="service-card" href="#" style="text-decoration: none;" onclick="closeModal('login-modal'); openModal('meet-modal');">
                     <div class="service-icon">🏥</div>
                     <h3>Rendez-vous en cabinet</h3>
                     <p>Prenez rendez-vous avec un spécialiste dans l'un de nos centres médicaux partenaires.</p>
+                   </a>
+                <!-- </div> -->
+                
+                <div class="service-card">
+                    <a href="Suivie.html" style="text-decoration: none;" >
+                    <div class="service-icon">📓</div>
+                    <h3>Suivi médical</h3>
+                    <p>Suivez vos traitements et recevez des rappels personnalisés pour vos médicaments.</p>
+                </a>
                 </div>
                 
                 <div class="service-card">
-                    <div class="service-icon">💊</div>
-                    <h3>Suivi médical</h3>
-                    <p>Suivez vos traitements et recevez des rappels personnalisés pour vos médicaments.</p>
+                    <a href="Pharmatie.html" style="text-decoration: none;">
+                    <div class="service-icon">⚕️</div>
+                    <h3>Pharmacie</h3>
+                    <p>Commandez vos médicaments en ligne et bénéficiez d'une livraison sécurisée à domicile.</p>
+                </a>
                 </div>
             </div>
         </div>
@@ -529,7 +543,7 @@
                     <p>MEDIPLUS a été créé avec une mission simple : rendre les soins de santé accessibles à tous. Notre plateforme met en relation patients et médecins qualifiés pour offrir des consultations de qualité, que ce soit à distance ou en personne.</p>
                     <p>Avec une équipe de professionnels dévoués et une technologie de pointe, nous nous engageons à améliorer votre expérience de soins de santé.</p>
                     <a href="#" class="btn">En savoir plus</a>
-                    <a href="https://drive.proton.me/urls/NSXQPZAEWG#I1iP9EHH456l" class="btn">Télécharger</a>
+                    <a href="https://drive.proton.me/urls/EAFCV0A1FM#mZLYkyGdKyim" class="btn">Télécharger</a>
                 </div>
             </div>
         </div>
@@ -543,9 +557,7 @@
                     <h3>MEDIPLUS</h3>
                     <ul>
                         <li><a href="#about">À propos</a></li>
-                        <li><a href="#">Carrières</a></li>
-                        <li><a href="#">Blog</a></li>
-                        <li><a href="#">Presse</a></li>
+                        <li><a href="#">News</a></li>
                     </ul>
                 </div>
                 
@@ -555,7 +567,7 @@
                         <li><a href="#">Téléconsultation</a></li>
                         <li><a href="#">Rendez-vous en cabinet</a></li>
                         <li><a href="#">Suivi médical</a></li>
-                        <li><a href="#">Ordonnances</a></li>
+                        <li><a href="#">Pharmacie</a></li>
                     </ul>
                 </div>
                 
@@ -705,6 +717,50 @@
                         <a href="#" onclick="closeModal('login-modal'); openModal('patient-modal');">Espace Patient</a> | 
                         <a href="#" onclick="closeModal('login-modal'); openModal('medecin-modal');">Espace Médecin</a>
                     </p>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Meet Modal -->
+    <div id="meet-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeModal('meet-modal')">&times;</span>
+            <div class="modal-header">
+                <h2>Rendez-vous</h2>
+                <p>Réservez un créneau</p>
+            </div>
+            
+            <form>
+                <div class="form-group">
+                    <label for="doctor-name">Nom complet</label>
+                    <input type="text" id="doctor-name" placeholder="Entrez votre nom">
+                </div>
+                <div class="form-group">
+                    <label for="login-email">Email</label>
+                    <input type="email" id="login-email" placeholder="Entrez votre email">
+                </div>
+                
+                <div class="form-group">
+                    <label for="login-password">Mot de passe</label>
+                    <input type="password" id="login-password" placeholder="Entrez votre mot de passe">
+                </div>
+                <div class="form-group">
+                    <label for="doctor-specialty">Domaine de santé</label>
+                    <select id="doctor-specialty">
+                        <option value="">Sélectionnez le domaine de santé</option>
+                        <option value="general">Médecine générale</option>
+                        <option value="cardio">Cardiologie</option>
+                        <option value="derma">Dermatologie</option>
+                        <option value="psy">Psychologie</option>
+                        <option value="other">Autre spécialité</option>
+                    </select>
+                </div>
+                
+                <button type="submit" class="submit-btn">Se connecter</button>
+                
+                <div style="text-align: center; margin-top: 20px;">
+                    
                 </div>
             </form>
         </div>

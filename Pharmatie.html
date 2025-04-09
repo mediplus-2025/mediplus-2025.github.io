@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pharmacies de Garde</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5;
+            color: #333;
+        }
+        
+        header {
+            background-color: #009688;
+            color: white;
+            text-align: center;
+            padding: 1rem 0;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+        
+        /* Header */
+        header {
+            background-color: #fff;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo h1 {
+            color: #1a73e8;
+            font-size: 28px;
+            font-weight: 700;
+        }
+        
+        .logo span {
+            color: #4caf50;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin-left: 30px;
+        }
+        
+        nav ul li a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            font-size: 16px;
+            transition: color 0.3s;
+        }
+        
+        nav ul li a:hover {
+            color: #1a73e8;
+        }
+        
+        .main-content {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+        
+        .section {
+            background-color: white;
+            border-radius: 8px;
+            padding: 1.5rem;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        }
+        
+        h1 {
+            margin: 0;
+            font-size: 2rem;
+        }
+        
+        h2 {
+            color: #009688;
+            margin-top: 0;
+            border-bottom: 2px solid #e0e0e0;
+            padding-bottom: 0.5rem;
+        }
+        
+        .pharmacy-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+        
+        .pharmacy-card {
+            background-color: white;
+            border-radius: 8px;
+            padding: 1rem;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            transition: transform 0.2s;
+        }
+        
+        .pharmacy-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .pharmacy-name {
+            font-weight: bold;
+            color: #009688;
+            font-size: 1.2rem;
+            margin: 0 0 0.5rem 0;
+        }
+        
+        .on-duty {
+            background-color: #4caf50;
+            color: white;
+            padding: 0.25rem 0.5rem;
+            border-radius: 4px;
+            display: inline-block;
+            font-size: 0.8rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .pharmacy-info {
+            margin-bottom: 0.5rem;
+        }
+        
+        .search-bar {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+        
+        input {
+            flex: 1;
+            padding: 0.5rem;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        
+        button {
+            background-color: #009688;
+            color: white;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        
+        .today-duty {
+            background-color: #e3f2fd;
+            border-left: 4px solid #2196f3;
+            padding: 1rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 1rem 0;
+            margin-top: 2rem;
+        }
+        .vole{
+            height: 100px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+        }
+        
+        @media (max-width: 768px) {
+            .pharmacy-list {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <img src="logo.png" alt="logo"  class="vole" >
+                    <h1>MEDI<span>PLUS</span></h1>
+                </div>
+                <nav>
+                    <ul>
+                        <li><a href="mediplus5.html#" class="active">Accueil</a></li>
+                        <li><a href="mediplus5.html#services">Services</a></li>
+                        <li><a href="mediplus5.html#espaces">Espaces</a></li>
+                        <li><a href="mediplus5.html#about">À propos</a></li>
+                        <li><a href="#" onclick="openModal('login-modal')">Connexion</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+    <div>
+        <h1 style="text-align: center;">Pharmacies de Garde</h1>
+        <p style="text-align: center;">Trouvez facilement les pharmacies de garde près de chez vous</p>
+    </div>
+    
+    <div class="container">
+        <div class="main-content">
+            <div class="section">
+                <div class="today-duty">
+                    <h3>Pharmacie de garde aujourd'hui</h3>
+                    <p><strong id="today-pharmacy">Pharmacie Raouda</strong></p>
+                    <p>Horaires: <span id="hours">08h00 - 22h00</span></p>
+                    <button onclick="getDirections()">Obtenir l'itinéraire</button>
+                </div>
+                
+                <div class="search-bar">
+                    <input type="text" id="search" placeholder="Rechercher une pharmacie...">
+                    <button onclick="searchPharmacy()">Rechercher</button>
+                </div>
+                
+                <h2>Toutes les pharmacies</h2>
+                <div class="pharmacy-list" id="pharmacy-list">
+                    <!-- Pharmacies will be loaded here -->
+                </div>
+            </div>
+            
+            <div class="section">
+                <h2>Planning des gardes</h2>
+                <table style="width: 100%; border-collapse: collapse;">
+                    <thead>
+                        <tr style="background-color: #009688; color: white;">
+                            <th style="padding: 0.5rem; text-align: left; border: 1px solid #ddd;">Date</th>
+                            <th style="padding: 0.5rem; text-align: left; border: 1px solid #ddd;">Pharmacie</th>
+                        </tr>
+                    </thead>
+                    <tbody id="schedule-table">
+                        <!-- Schedule will be loaded here -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    
+    <footer>
+        <p>&copy; 2025 Pharmacies de Garde | Tous droits réservés</p>
+    </footer>
+    
+    <script>
+        // Pharmacy data
+        const pharmacies = [
+            {
+                id: 1,
+                name: "Pharmacie Saint Pierre",
+                address: " Boulevard Du Haho, Hedzranawoe, Maritime (Region) ",
+                phone: "+228 70 43 26 67",
+                hours: "08h00 - 20h00",
+                onDuty: false
+            },
+            {
+                id: 2,
+                name: "Pharmacie Yem Bla",
+                address: "20633, Lomé, Togo",
+                phone: "+228 90 88 98 72",
+                hours: "08h30 - 19h30",
+                onDuty: false
+            },
+            {
+                id: 3,
+                name: "Pharmacie Raouda",
+                address: "4495 Boulevard Zio Hédzranawoe, derrière TOGO 2000",
+                phone: "+228  91 61 33 32 ",
+                hours: "08h00 - 22h00",
+                onDuty: true
+            },
+            {
+                id: 4,
+                name: "Pharmacie de la Providence",
+                address: "1221, Boulevard Jean Paul II BP 440 Lomé Maritime",
+                phone: "+228 22 26 66 48",
+                hours: "07h30 - 20h00",
+                onDuty: false
+            },
+            {
+                id: 5,
+                name: "Pharmacie KOUESSAN",
+                address: " 8085 Stade De Kegue, Boulevard Jean Paul Ii, Tokoin Doumassesse, Maritime (Region)",
+                phone: "+228 91 74 55 57",
+                hours: "08h00 - 21h00",
+                onDuty: false
+            },
+            {
+                id: 6,
+                name: "Pharmacie de Kégué",
+                address: "Rue De La Poussiere, Kegue, Hedzranawoe, Maritime (Region)",
+                phone: "+228 91 90 90 34",
+                hours: "08h00 - 19h00",
+                onDuty: false
+            }
+        ];
+        
+        // Schedule data
+        const schedule = [
+            { date: "09 Avril 2025", pharmacy: "Pharmacie Raouda" },
+            { date: "10 Avril 2025", pharmacy: "Pharmacie KOUESSAN" },
+            { date: "11 Avril 2025", pharmacy: "Pharmacie Saint Pierre" },
+            { date: "12 Avril 2025", pharmacy: "Pharmacie de Kégué" },
+            { date: "13 Avril 2025", pharmacy: "Pharmacie de la Providence" },
+            { date: "14 Avril 2025", pharmacy: "Pharmacie Yem Bla" }
+        ];
+        
+        // Load pharmacies
+        function loadPharmacies(pharmaciesToShow = pharmacies) {
+            const pharmacyListElement = document.getElementById("pharmacy-list");
+            pharmacyListElement.innerHTML = "";
+            
+            pharmaciesToShow.forEach(pharmacy => {
+                const pharmacyCard = document.createElement("div");
+                pharmacyCard.className = "pharmacy-card";
+                
+                let html = `
+                    <div class="pharmacy-name">${pharmacy.name}</div>
+                `;
+                
+                if (pharmacy.onDuty) {
+                    html += `<div class="on-duty">De garde aujourd'hui</div>`;
+                }
+                
+                html += `
+                    <div class="pharmacy-info">Adresse: ${pharmacy.address}</div>
+                    <div class="pharmacy-info">Téléphone: ${pharmacy.phone}</div>
+                    <div class="pharmacy-info">Horaires: ${pharmacy.hours}</div>
+                    <button onclick="showDetails(${pharmacy.id})">Plus d'infos</button>
+                `;
+                
+                pharmacyCard.innerHTML = html;
+                pharmacyListElement.appendChild(pharmacyCard);
+            });
+        }
+        
+        // Load schedule
+        function loadSchedule() {
+            const scheduleTableElement = document.getElementById("schedule-table");
+            scheduleTableElement.innerHTML = "";
+            
+            schedule.forEach(day => {
+                const row = document.createElement("tr");
+                row.innerHTML = `
+                    <td style="padding: 0.5rem; border: 1px solid #ddd;">${day.date}</td>
+                    <td style="padding: 0.5rem; border: 1px solid #ddd;">${day.pharmacy}</td>
+                `;
+                scheduleTableElement.appendChild(row);
+            });
+        }
+        
+        // Search pharmacy
+        function searchPharmacy() {
+            const searchTerm = document.getElementById("search").value.toLowerCase();
+            const filteredPharmacies = pharmacies.filter(pharmacy => 
+                pharmacy.name.toLowerCase().includes(searchTerm) || 
+                pharmacy.address.toLowerCase().includes(searchTerm)
+            );
+            loadPharmacies(filteredPharmacies);
+        }
+        
+        // Show pharmacy details
+        function showDetails(id) {
+            const pharmacy = pharmacies.find(p => p.id === id);
+            if (pharmacy) {
+                alert(`
+                    ${pharmacy.name}
+                    Adresse: ${pharmacy.address}
+                    Téléphone: ${pharmacy.phone}
+                    Horaires: ${pharmacy.hours}
+                    ${pharmacy.onDuty ? 'De garde aujourd\'hui' : 'Pas de garde aujourd\'hui'}
+                `);
+            }
+        }
+        
+        // Get directions
+        function getDirections() {
+            const onDutyPharmacy = pharmacies.find(p => p.onDuty);
+            if (onDutyPharmacy) {
+                alert(`Obtention de l'itinéraire vers ${onDutyPharmacy.name} à ${onDutyPharmacy.address}`);
+            }
+        }
+        
+        // Initialize
+        window.onload = function() {
+            loadPharmacies();
+            loadSchedule();
+            
+            // Update today's pharmacy
+            const todayPharmacy = pharmacies.find(p => p.onDuty);
+            if (todayPharmacy) {
+                document.getElementById("today-pharmacy").textContent = todayPharmacy.name;
+                document.getElementById("hours").textContent = todayPharmacy.hours;
+            }
+        };
+    </script>
+</body>
+</html>
